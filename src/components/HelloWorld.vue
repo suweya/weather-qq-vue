@@ -3,6 +3,7 @@
     <CTHours></CTHours>
     <div class="container" style="marginTop: 30px">
       <CTSevenDays></CTSevenDays>
+      <CTLiving></CTLiving>
     </div>
   </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
 import CTHours from './CTHours'
 import CTSevenDays from './CTSevenDays'
+import CTLiving from './CTLiving'
 
 export default {
   name: 'HelloWorld',
@@ -20,7 +22,8 @@ export default {
   },
   components: {
     CTHours,
-    CTSevenDays
+    CTSevenDays,
+    CTLiving
   }
 }
 </script>

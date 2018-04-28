@@ -25,6 +25,9 @@
 </template>
 
 <script>
+const echarts = require('echarts/lib/echarts')
+require('echarts/lib/chart/line')
+
 export default {
   name: 'CT-Seven-Days',
   data: function() {
@@ -72,6 +75,128 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    let myChart = echarts.init(document.getElementById('chart-days'))
+    const option = {
+      backgroundColor: 'rgba(0,0,0,0.0)',
+      color: ['#FCC370', '#94CCF9'],
+      animation: false,
+      // renderAsImage: true,
+      tooltip: {
+        show: false
+      },
+      xAxis: [
+        {
+          type: 'category',
+          show: false,
+          data: [
+            '2018-04-27',
+            '2018-04-28',
+            '2018-04-29',
+            '2018-04-30',
+            '2018-05-01',
+            '2018-05-02',
+            '2018-05-03',
+            '2018-05-04'
+          ]
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          show: false,
+          boundaryGap: ['45%', '45%'],
+          scale: true
+        }
+      ],
+      grid: {
+        x: 0,
+        y: 0,
+        y2: 0,
+        height: 174,
+        width: 740,
+        borderWidth: '0px'
+      },
+      series: [
+        {
+          type: 'line',
+          data: [26, 28, 29, 31, 32, 33, 26, 28],
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          clipOverflow: false,
+          lineStyle: {
+            normal: {
+              width: 3
+            }
+          },
+          label: {
+            normal: {
+              show: true,
+              textStyle: {
+                fontSize: '18',
+                fontFamily: '微软雅黑',
+                color: '#384C78'
+              },
+              distance: 10,
+              formatter: function(val) {
+                if (val.dataIndex === 0) {
+                  return '{first|' + val.data + '°}'
+                }
+                return val.data + '°'
+              },
+              rich: {
+                first: {
+                  fontSize: '18',
+                  fontFamily: '微软雅黑',
+                  color: '#C2C2C2'
+                }
+              }
+            }
+          }
+        },
+        {
+          type: 'line',
+          data: [21, 21, 22, 23, 23, 23, 19, 18],
+          smooth: true,
+          symbol: 'circle',
+          symbolSize: 8,
+          lineStyle: {
+            normal: {
+              width: 3
+            }
+          },
+          label: {
+            normal: {
+              show: true,
+              position: 'bottom',
+              textStyle: {
+                fontSize: '18',
+                fontFamily: '微软雅黑',
+                color: '#555555'
+              },
+              distance: 10,
+              formatter: function(val) {
+                if (val.dataIndex === 0) {
+                  return '{first|' + val.data + '°}'
+                }
+                return val.data + '°'
+              },
+              rich: {
+                first: {
+                  fontSize: '18',
+                  fontFamily: '微软雅黑',
+                  color: '#C2C2C2'
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+
+    myChart.setOption(option)
   }
 }
 </script>
