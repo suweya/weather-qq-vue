@@ -1,0 +1,30 @@
+@import "./variables.scss";
+
+@import "./reset.scss";
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+  }
+}
+
+body {
+  background-color: #f6f9fe;
+}
+
+.ct-page-ctrl {
+  float: right;
+}
+
+.btn {
+  float: left;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+}
